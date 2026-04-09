@@ -1,0 +1,909 @@
+/**
+ * 小红公寓claw - 表单样式增强
+ * 用于美化 Element Plus 表单组件
+ */
+
+// ============================================
+// 基础表单样式
+// ============================================
+
+// 表单容器
+.xh-form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+
+  &--narrow {
+    max-width: 800px;
+  }
+
+  &--wide {
+    max-width: 1400px;
+  }
+}
+
+// 表单卡片布局
+.xh-form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+// ============================================
+// Element Plus 表单覆盖样式
+// ============================================
+
+// 表单整体样式
+.el-form {
+  &.xh-form {
+    // 标签样式
+    .el-form-item__label {
+      font-weight: 500;
+      color: #1A1A2E;
+      font-size: 14px;
+      padding-right: 16px;
+
+      &::after {
+        content: '';
+      }
+    }
+
+    // 必填标记
+    .is-required > .el-form-item__label::before {
+      content: '*';
+      color: #FF6B6B;
+      margin-right: 4px;
+      font-weight: 600;
+    }
+
+    // 表单项间距
+    .el-form-item {
+      margin-bottom: 24px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // 表单内容区域
+    .el-form-item__content {
+      line-height: 1.5;
+    }
+
+    // 错误提示
+    .el-form-item__error {
+      color: #FF6B6B;
+      font-size: 12px;
+      padding-top: 4px;
+      font-weight: 500;
+    }
+
+    // 验证成功状态
+    .is-success {
+      .el-input__wrapper,
+      .el-textarea__inner {
+        box-shadow: 0 0 0 1px #52C41A inset;
+      }
+    }
+
+    // 验证错误状态
+    .is-error {
+      .el-input__wrapper,
+      .el-textarea__inner {
+        box-shadow: 0 0 0 1px #FF6B6B inset;
+      }
+    }
+  }
+}
+
+// ============================================
+// 输入框样式增强
+// ============================================
+
+// 输入框基础样式
+.el-input {
+  &.xh-input {
+    .el-input__wrapper {
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px #E8E8EF inset;
+      padding: 0 14px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 0 0 1px #FF8E8E inset;
+      }
+
+      &.is-focus {
+        box-shadow: 0 0 0 1px #FF6B6B inset, 0 0 0 3px rgba(255, 107, 107, 0.1);
+      }
+    }
+
+    .el-input__inner {
+      height: 42px;
+      font-size: 14px;
+      color: #1A1A2E;
+
+      &::placeholder {
+        color: #B8B8C8;
+      }
+    }
+
+    // 前缀/后缀图标
+    .el-input__prefix,
+    .el-input__suffix {
+      color: #8A8AA3;
+    }
+
+    // 大尺寸
+    &--large {
+      .el-input__wrapper {
+        padding: 0 18px;
+      }
+
+      .el-input__inner {
+        height: 50px;
+        font-size: 15px;
+      }
+    }
+
+    // 小尺寸
+    &--small {
+      .el-input__wrapper {
+        padding: 0 12px;
+      }
+
+      .el-input__inner {
+        height: 36px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+// 文本域样式
+.el-textarea {
+  &.xh-textarea {
+    .el-textarea__inner {
+      border-radius: 10px;
+      border: 1px solid #E8E8EF;
+      padding: 12px 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #1A1A2E;
+      transition: all 0.3s ease;
+      min-height: 100px;
+
+      &:hover {
+        border-color: #FF8E8E;
+      }
+
+      &:focus {
+        border-color: #FF6B6B;
+        box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+      }
+
+      &::placeholder {
+        color: #B8B8C8;
+      }
+    }
+  }
+}
+
+// ============================================
+// 选择器样式增强
+// ============================================
+
+.el-select {
+  &.xh-select {
+    .el-input__wrapper {
+      border-radius: 10px;
+    }
+
+    .el-tag {
+      background: #FFF0F0;
+      border-color: #FFD4D4;
+      color: #FF6B6B;
+      border-radius: 6px;
+
+      .el-tag__close {
+        color: #FF6B6B;
+
+        &:hover {
+          background: #FF6B6B;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+// 下拉菜单样式
+.el-select-dropdown {
+  &.xh-select-dropdown {
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border: 1px solid #F0F0F5;
+
+    .el-select-dropdown__item {
+      padding: 10px 16px;
+      font-size: 14px;
+      color: #1A1A2E;
+      border-radius: 6px;
+      margin: 2px 6px;
+
+      &:hover {
+        background: #FFF5F5;
+        color: #FF6B6B;
+      }
+
+      &.selected {
+        background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+        color: #fff;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// ============================================
+// 单选/复选框样式增强
+// ============================================
+
+// 单选框
+.el-radio {
+  &.xh-radio {
+    margin-right: 20px;
+
+    .el-radio__input {
+      .el-radio__inner {
+        width: 18px;
+        height: 18px;
+        border-color: #D0D0E0;
+
+        &::after {
+          width: 8px;
+          height: 8px;
+          background: #FF6B6B;
+        }
+      }
+
+      &.is-checked {
+        .el-radio__inner {
+          border-color: #FF6B6B;
+          background: #fff;
+        }
+
+        & + .el-radio__label {
+          color: #FF6B6B;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .el-radio__label {
+      font-size: 14px;
+      color: #1A1A2E;
+      padding-left: 8px;
+    }
+  }
+}
+
+// 复选框
+.el-checkbox {
+  &.xh-checkbox {
+    margin-right: 20px;
+
+    .el-checkbox__input {
+      .el-checkbox__inner {
+        width: 18px;
+        height: 18px;
+        border-radius: 5px;
+        border-color: #D0D0E0;
+
+        &::after {
+          border-width: 2px;
+          left: 5px;
+          top: 2px;
+        }
+      }
+
+      &.is-checked {
+        .el-checkbox__inner {
+          background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+          border-color: #FF6B6B;
+        }
+
+        & + .el-checkbox__label {
+          color: #FF6B6B;
+          font-weight: 500;
+        }
+      }
+
+      &.is-indeterminate {
+        .el-checkbox__inner {
+          background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+          border-color: #FF6B6B;
+
+          &::before {
+            background: #fff;
+          }
+        }
+      }
+    }
+
+    .el-checkbox__label {
+      font-size: 14px;
+      color: #1A1A2E;
+      padding-left: 8px;
+    }
+  }
+}
+
+// ============================================
+// 开关样式增强
+// ============================================
+
+.el-switch {
+  &.xh-switch {
+    .el-switch__core {
+      border-radius: 12px;
+      background: #E0E0E8;
+      border-color: #E0E0E8;
+
+      .el-switch__action {
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    &.is-checked {
+      .el-switch__core {
+        background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+        border-color: #FF6B6B;
+      }
+    }
+
+    .el-switch__label {
+      font-size: 14px;
+      color: #8A8AA3;
+
+      &.is-active {
+        color: #FF6B6B;
+      }
+    }
+  }
+}
+
+// ============================================
+// 日期选择器样式增强
+// ============================================
+
+.el-date-editor {
+  &.xh-date-picker {
+    .el-input__wrapper {
+      border-radius: 10px;
+    }
+
+    .el-range-input {
+      font-size: 14px;
+      color: #1A1A2E;
+    }
+
+    .el-range-separator {
+      color: #8A8AA3;
+    }
+  }
+}
+
+// 日期选择面板
+.el-picker-panel {
+  &.xh-picker-panel {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+    .el-date-table {
+      td {
+        &.current:not(.disabled) {
+          span {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+            color: #fff;
+          }
+        }
+
+        &.today {
+          span {
+            color: #FF6B6B;
+            font-weight: 600;
+          }
+        }
+
+        &:hover {
+          span {
+            background: #FFF5F5;
+            color: #FF6B6B;
+          }
+        }
+      }
+    }
+
+    .el-picker-panel__footer {
+      .el-button--text {
+        color: #FF6B6B;
+
+        &:hover {
+          color: #FF5252;
+        }
+      }
+
+      .el-button--primary {
+        background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+        border-color: #FF6B6B;
+      }
+    }
+  }
+}
+
+// ============================================
+// 级联选择器样式增强
+// ============================================
+
+.el-cascader {
+  &.xh-cascader {
+    .el-input__wrapper {
+      border-radius: 10px;
+    }
+  }
+}
+
+.el-cascader-panel {
+  &.xh-cascader-panel {
+    border-radius: 10px;
+
+    .el-cascader-node {
+      padding: 10px 16px;
+      font-size: 14px;
+
+      &:hover {
+        background: #FFF5F5;
+      }
+
+      &.in-active-path,
+      &.is-active {
+        background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+        color: #fff;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// ============================================
+// 树形选择器样式增强
+// ============================================
+
+.el-tree-select {
+  &.xh-tree-select {
+    .el-input__wrapper {
+      border-radius: 10px;
+    }
+  }
+}
+
+// ============================================
+// 上传组件样式增强
+// ============================================
+
+.el-upload {
+  &.xh-upload {
+    .el-upload-dragger {
+      border-radius: 12px;
+      border: 2px dashed #E0E0E8;
+      background: #FAFAFC;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #FF6B6B;
+        background: #FFF5F5;
+      }
+
+      .el-icon-upload {
+        font-size: 48px;
+        color: #FF6B6B;
+        margin-bottom: 12px;
+      }
+
+      .el-upload__text {
+        font-size: 14px;
+        color: #8A8AA3;
+
+        em {
+          color: #FF6B6B;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+// 上传列表
+.el-upload-list {
+  &.xh-upload-list {
+    .el-upload-list__item {
+      border-radius: 8px;
+      border: 1px solid #E8E8EF;
+      margin-top: 8px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #FF8E8E;
+        background: #FFF5F5;
+      }
+
+      .el-upload-list__item-name {
+        color: #1A1A2E;
+
+        &:hover {
+          color: #FF6B6B;
+        }
+      }
+
+      .el-icon--close {
+        color: #8A8AA3;
+
+        &:hover {
+          color: #FF6B6B;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// 滑块样式增强
+// ============================================
+
+.el-slider {
+  &.xh-slider {
+    .el-slider__runway {
+      background: #E8E8EF;
+      border-radius: 4px;
+    }
+
+    .el-slider__bar {
+      background: linear-gradient(90deg, #FF6B6B 0%, #FF8E8E 100%);
+      border-radius: 4px;
+    }
+
+    .el-slider__button {
+      border-color: #FF6B6B;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .el-slider__marks-text {
+      color: #8A8AA3;
+      font-size: 12px;
+    }
+  }
+}
+
+// ============================================
+// 评分样式增强
+// ============================================
+
+.el-rate {
+  &.xh-rate {
+    .el-rate__icon {
+      font-size: 20px;
+      margin-right: 4px;
+    }
+
+    .el-icon {
+      color: #E0E0E8;
+    }
+
+    .el-rate__decimal,
+    .el-rate__icon--active {
+      color: #FFB800;
+    }
+  }
+}
+
+// ============================================
+// 颜色选择器样式增强
+// ============================================
+
+.el-color-picker {
+  &.xh-color-picker {
+    .el-color-picker__trigger {
+      border-radius: 8px;
+      border: 2px solid #E8E8EF;
+      padding: 4px;
+
+      &:hover {
+        border-color: #FF6B6B;
+      }
+    }
+  }
+}
+
+// ============================================
+// 数字输入框样式增强
+// ============================================
+
+.el-input-number {
+  &.xh-input-number {
+    .el-input-number__decrease,
+    .el-input-number__increase {
+      background: #FAFAFC;
+      border-color: #E8E8EF;
+      color: #8A8AA3;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #FFF5F5;
+        color: #FF6B6B;
+        border-color: #FF8E8E;
+      }
+    }
+
+    .el-input__wrapper {
+      border-radius: 10px;
+    }
+
+    &.is-controls-right {
+      .el-input-number__increase {
+        border-radius: 0 8px 0 0;
+      }
+
+      .el-input-number__decrease {
+        border-radius: 0 0 8px 0;
+      }
+    }
+  }
+}
+
+// ============================================
+// 自动完成样式增强
+// ============================================
+
+.el-autocomplete {
+  &.xh-autocomplete {
+    .el-input__wrapper {
+      border-radius: 10px;
+    }
+  }
+}
+
+.el-autocomplete-suggestion {
+  &.xh-autocomplete-suggestion {
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+    li {
+      padding: 10px 16px;
+      font-size: 14px;
+      color: #1A1A2E;
+      border-radius: 6px;
+      margin: 2px 6px;
+
+      &:hover {
+        background: #FFF5F5;
+        color: #FF6B6B;
+      }
+
+      &.highlighted {
+        background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+        color: #fff;
+      }
+    }
+  }
+}
+
+// ============================================
+// 表单操作按钮区域
+// ============================================
+
+.xh-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 24px;
+  margin-top: 24px;
+  border-top: 1px solid #F0F0F5;
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--start {
+    justify-content: flex-start;
+  }
+
+  &--between {
+    justify-content: space-between;
+  }
+
+  .el-button {
+    min-width: 100px;
+    height: 42px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+
+    &--primary {
+      background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+      border: none;
+
+      &:hover {
+        background: linear-gradient(135deg, #FF5252 0%, #FF7B7B 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(255, 107, 107, 0.35);
+      }
+    }
+  }
+}
+
+// ============================================
+// 表单分组标题
+// ============================================
+
+.xh-form-section {
+  margin-bottom: 32px;
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1A1A2E;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 4px solid #FF6B6B;
+    line-height: 1.4;
+  }
+
+  &__desc {
+    font-size: 13px;
+    color: #8A8AA3;
+    margin-top: -16px;
+    margin-bottom: 20px;
+    padding-left: 16px;
+  }
+}
+
+// ============================================
+// 表单提示信息
+// ============================================
+
+.xh-form-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+
+  .el-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  &--info {
+    background: #F0F5FF;
+    color: #4A7CFF;
+    border: 1px solid #D6E4FF;
+  }
+
+  &--success {
+    background: #F6FFED;
+    color: #52C41A;
+    border: 1px solid #D9F7BE;
+  }
+
+  &--warning {
+    background: #FFFBE6;
+    color: #FAAD14;
+    border: 1px solid #FFE58F;
+  }
+
+  &--error {
+    background: #FFF2F0;
+    color: #FF6B6B;
+    border: 1px solid #FFCCC7;
+  }
+}
+
+// ============================================
+// 表单标签页
+// ============================================
+
+.xh-form-tabs {
+  .el-tabs__header {
+    margin-bottom: 24px;
+  }
+
+  .el-tabs__nav-wrap::after {
+    background: #E8E8EF;
+    height: 1px;
+  }
+
+  .el-tabs__item {
+    font-size: 14px;
+    font-weight: 500;
+    color: #8A8AA3;
+    padding: 0 20px;
+    height: 44px;
+    line-height: 44px;
+
+    &:hover {
+      color: #FF8E8E;
+    }
+
+    &.is-active {
+      color: #FF6B6B;
+      font-weight: 600;
+    }
+  }
+
+  .el-tabs__active-bar {
+    background: linear-gradient(90deg, #FF6B6B 0%, #FF8E8E 100%);
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .el-tabs__content {
+    padding: 8px 0;
+  }
+}
+
+// ============================================
+// 响应式适配
+// ============================================
+
+@media (max-width: 768px) {
+  .xh-form-container {
+    padding: 16px;
+  }
+
+  .xh-form {
+    .el-form-item {
+      margin-bottom: 20px;
+
+      &__label {
+        float: none;
+        display: block;
+        text-align: left;
+        padding: 0 0 8px;
+        line-height: 1.4;
+      }
+
+      &__content {
+        margin-left: 0 !important;
+      }
+    }
+  }
+
+  .xh-form-actions {
+    flex-direction: column-reverse;
+
+    .el-button {
+      width: 100%;
+      margin-left: 0 !important;
+    }
+  }
+
+  .xh-form-section {
+    margin-bottom: 24px;
+
+    &__title {
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+  }
+}

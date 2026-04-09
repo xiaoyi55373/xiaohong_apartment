@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <defs>
+    <linearGradient id="hGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF9F43;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- 图标 -->
+  <g transform="translate(6, 6) scale(0.48)">
+    <path d="M50 15 L85 45 L85 80 Q85 85 80 85 L20 85 Q15 85 15 80 L15 45 Z" fill="url(#hGradient)"/>
+    <path d="M25 45 L50 22 L75 45" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="42" y="58" width="16" height="27" rx="3" fill="white"/>
+    <rect x="28" y="50" width="10" height="10" rx="2" fill="white"/>
+    <rect x="62" y="50" width="10" height="10" rx="2" fill="white"/>
+    <circle cx="72" cy="28" r="8" fill="white" opacity="0.9"/>
+    <path d="M72 28 L78 22 M72 28 L78 28 M72 28 L78 34" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- 文字 -->
+  <text x="64" y="38" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="22" font-weight="bold" fill="#1A1A2E">小红公寓</text>
+  <text x="64" y="54" font-family="Inter, PingFang SC, sans-serif" font-size="14" font-weight="500" fill="#FF6B6B">claw</text>
+</svg>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaohong.lease.web.admin.mapper.ScheduledTaskLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.xiaohong.lease.model.entity.ScheduledTaskLog">
+        <id property="id" column="id"/>
+        <result property="taskId" column="task_id"/>
+        <result property="taskName" column="task_name"/>
+        <result property="taskType" column="task_type"/>
+        <result property="executeStatus" column="execute_status"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="duration" column="duration"/>
+        <result property="executeResult" column="execute_result"/>
+        <result property="errorMessage" column="error_message"/>
+        <result property="affectedCount" column="affected_count"/>
+        <result property="serverIp" column="server_ip"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="isDeleted" column="is_deleted"/>
+    </resultMap>
+
+    <!-- 查询最近执行的任务日志 -->
+    <select id="selectRecentLogs" resultMap="BaseResultMap">
+        SELECT * FROM scheduled_task_log 
+        WHERE is_deleted = 0
+        ORDER BY start_time DESC
+        LIMIT #{limit}
+    </select>
+
+    <!-- 清理指定日期之前的日志 -->
+    <delete id="deleteLogsBefore">
+        DELETE FROM scheduled_task_log 
+        WHERE create_time &lt; #{date}
+    </delete>
+
+</mapper>

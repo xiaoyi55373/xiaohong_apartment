@@ -1,0 +1,46 @@
+server:
+  port: 0
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=SYSTEM_USER
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    type: org.springframework.jdbc.datasource.SimpleDriverDataSource
+  sql:
+    init:
+      schema-locations: classpath:db/schema-h2.sql
+      data-locations: classpath:db/data-h2.sql
+      mode: always
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*.xml
+
+app:
+  auth:
+    path-patterns:
+      include: /app/**,/mini/**
+      exclude: /app/login/**,/mini/login
+
+minio:
+  endpoint: http://127.0.0.1:9000
+  access-key: ${MINIO_ACCESS_KEY:minioadmin}
+  secret-key: ${MINIO_SECRET_KEY:minioadmin}
+  bucket-name: xiaohong
+
+sms:
+  test-mode: true
+
+xiaohong:
+  rate-limit:
+    enabled: false
+  circuit-breaker:
+    enabled: false

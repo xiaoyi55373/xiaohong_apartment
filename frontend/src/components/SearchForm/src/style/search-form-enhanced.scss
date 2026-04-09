@@ -1,0 +1,378 @@
+/**
+ * @author 小红
+ * @description SearchForm 搜索表单增强样式 - 小红公寓claw 品牌定制
+ */
+
+.search-form-wrapper {
+  // 搜索头部
+  .search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(232, 232, 239, 0.8);
+
+    .search-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1A1A2E;
+
+      .el-icon {
+        color: #FF6B6B;
+        font-size: 20px;
+      }
+    }
+
+    .search-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .el-button {
+        font-size: 13px;
+
+        .el-icon {
+          margin-right: 4px;
+        }
+      }
+
+      .action-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        cursor: pointer;
+        color: #8A8AA3;
+        transition: all 0.25s ease;
+
+        &:hover {
+          background: rgba(255, 107, 107, 0.1);
+          color: #FF6B6B;
+        }
+      }
+    }
+  }
+
+  // 基础搜索区域
+  .table-search {
+    padding: 24px !important;
+    margin-bottom: 16px;
+    background: linear-gradient(145deg, #ffffff 0%, #fafafc 100%);
+    border-radius: 16px;
+    box-shadow: 
+      0 4px 20px rgba(26, 26, 46, 0.06),
+      0 1px 3px rgba(26, 26, 46, 0.04);
+    border: 1px solid rgba(232, 232, 239, 0.6);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 
+        0 8px 32px rgba(26, 26, 46, 0.1),
+        0 2px 6px rgba(26, 26, 46, 0.06);
+    }
+
+    :deep(.el-form) {
+      .el-form-item {
+        margin-bottom: 20px;
+
+        .el-form-item__label {
+          font-size: 14px;
+          font-weight: 500;
+          color: #1A1A2E;
+          padding-right: 12px;
+
+          &::after {
+            content: '';
+          }
+        }
+
+        .el-form-item__content {
+          .el-input,
+          .el-select {
+            width: 100%;
+
+            .el-input__inner,
+            .el-select__selection {
+              height: 40px;
+              line-height: 40px;
+              border-radius: 10px;
+              border-color: #E8E8EF;
+              background: #fff;
+              font-size: 14px;
+              color: #4A4A68;
+              transition: all 0.25s ease;
+
+              &::placeholder {
+                color: #B8B8CC;
+              }
+
+              &:hover {
+                border-color: #FF6B6B;
+              }
+
+              &:focus {
+                border-color: #FF6B6B;
+                box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+              }
+            }
+
+            .el-input__prefix {
+              color: #8A8AA3;
+            }
+          }
+
+          .el-select {
+            .el-select__selection {
+              height: 40px;
+              line-height: 38px;
+            }
+
+            .el-select__suffix {
+              .el-icon {
+                color: #8A8AA3;
+              }
+            }
+          }
+
+          .el-date-editor {
+            width: 100%;
+            height: 40px;
+            border-radius: 10px;
+            border-color: #E8E8EF;
+
+            &:hover {
+              border-color: #FF6B6B;
+            }
+
+            &:focus {
+              border-color: #FF6B6B;
+              box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+            }
+
+            .el-input__icon {
+              color: #8A8AA3;
+            }
+
+            .el-range-input {
+              color: #4A4A68;
+
+              &::placeholder {
+                color: #B8B8CC;
+              }
+            }
+
+            .el-range-separator {
+              color: #8A8AA3;
+            }
+          }
+
+          .el-input-number {
+            width: 100%;
+
+            .el-input__inner {
+              text-align: left;
+            }
+
+            .el-input-number__decrease,
+            .el-input-number__increase {
+              border-color: #E8E8EF;
+              color: #8A8AA3;
+              transition: all 0.2s ease;
+
+              &:hover {
+                color: #FF6B6B;
+                background: #FFF0F0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .operation {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      padding-top: 4px;
+
+      .el-button {
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-weight: 500;
+        font-size: 14px;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 40px;
+
+        .el-icon {
+          margin-right: 4px;
+          font-size: 16px;
+        }
+
+        &.search-btn {
+          background: linear-gradient(135deg, #FF6B6B 0%, #E55A5A 100%);
+          border: none;
+          box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+          }
+
+          &:active {
+            transform: translateY(0);
+          }
+        }
+
+        &.reset-btn {
+          border-color: #E8E8EF;
+          color: #4A4A68;
+          background: #fff;
+
+          &:hover {
+            border-color: #FF6B6B;
+            color: #FF6B6B;
+            background: #FFF0F0;
+            transform: translateY(-2px);
+          }
+
+          &:active {
+            transform: translateY(0);
+          }
+        }
+
+        &.search-isOpen {
+          font-size: 14px;
+          font-weight: 500;
+          color: #FF6B6B;
+
+          &:hover {
+            background: rgba(255, 107, 107, 0.08);
+          }
+
+          .el-icon--right {
+            margin-left: 4px;
+            margin-right: 0;
+            transition: transform 0.25s ease;
+          }
+
+          &:hover .el-icon--right {
+            transform: translateY(2px);
+          }
+        }
+      }
+    }
+  }
+
+  // 快速筛选
+  .quick-filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(250, 250, 252, 0.8) 100%);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(232, 232, 239, 0.6);
+
+    .quick-filter-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #8A8AA3;
+      white-space: nowrap;
+    }
+
+    .quick-filter-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      .quick-filter-tag {
+        cursor: pointer;
+        transition: all 0.25s ease;
+        border-radius: 6px;
+        padding: 4px 12px;
+        font-size: 12px;
+
+        &:hover {
+          transform: translateY(-1px);
+        }
+
+        &.el-tag--primary {
+          background: linear-gradient(135deg, #FF6B6B 0%, #E55A5A 100%);
+          border: none;
+          box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+        }
+      }
+    }
+  }
+}
+
+// 响应式适配
+@media screen and (max-width: 768px) {
+  .search-form-wrapper {
+    .search-header {
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+
+      .search-actions {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+
+    .table-search {
+      padding: 16px !important;
+
+      :deep(.el-form) {
+        .el-form-item {
+          margin-bottom: 16px;
+
+          .el-form-item__label {
+            font-size: 13px;
+          }
+
+          .el-form-item__content {
+            .el-input,
+            .el-select {
+              .el-input__inner,
+              .el-select__selection {
+                height: 36px;
+                line-height: 36px;
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
+
+      .operation {
+        flex-wrap: wrap;
+        gap: 8px;
+
+        .el-button {
+          padding: 8px 16px;
+          height: 36px;
+          font-size: 13px;
+        }
+      }
+    }
+
+    .quick-filters {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 12px 16px;
+
+      .quick-filter-list {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: 小红公寓claw - 用户端服务(测试环境)
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/lease_test?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2b8
+    username: root
+    password: ${DB_PASSWORD:your_password_here}
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 60000
+      idle-timeout: 500000
+      max-lifetime: 540000
+      maximum-pool-size: 12
+      minimum-idle: 10
+      pool-name: SPHHikariPool
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 1
+      # 连接池配置
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: 1000ms
+      # 超时配置
+      timeout: 5000ms
+      # 关闭超时
+      shutdown-timeout: 100ms
+  jackson:
+    time-zone: GMT+8
+
+# 小红公寓claw 缓存配置
+xiaohong:
+  cache:
+    enabled: true
+  performance:
+    enabled: true
+  rate-limit:
+    enabled: true
+    default-window: 60
+    default-max-requests: 100
+    login-window: 60
+    login-max-requests: 5
+    sms-window: 60
+    sms-max-requests: 3
+  circuit-breaker:
+    enabled: true
+    default-failure-threshold: 5
+    default-success-threshold: 3
+    default-timeout-duration: 30000
+    default-half-open-max-calls: 3
+
+# 测试环境关闭SQL打印，使用日志记录
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+springdoc:
+  default-flat-param-object: true
+
+aliyun:
+  sms:
+    access-key-id: ${ALIYUN_ACCESS_KEY_ID:your_access_key_id}
+    access-key-secret: ${ALIYUN_ACCESS_KEY_SECRET:your_access_key_secret}
+    endpoint: dysmsapi.aliyuncs.com
+
+app:
+  auth:
+    path-patterns:
+      include: /app/**,/mini/**
+      exclude: /app/login/**,/mini/login
+  cors:
+    allowed-origins:
+      - "https://www.gitlbo.top"
+      - "https://mini.gitlbo.top"
+
+minio:
+  endpoint: ${MINIO_ENDPOINT:http://localhost:9000}
+  access-key: ${MINIO_ACCESS_KEY:your_access_key}
+  secret-key: ${MINIO_SECRET_KEY:your_secret_key}
+  bucket-name: ${MINIO_BUCKET:xiaohong}
+
+# 短信服务配置
+sms:
+  # 测试模式：true-验证码输出到控制台，false-发送真实短信
+  test-mode: true
+
+# 邮件服务配置
+spring:
+  mail:
+    host: smtp.example.com
+    port: 587
+    username: ${MAIL_USERNAME:test@xiaohong.com}
+    password: ${MAIL_PASSWORD:test_password}
+    from-name: 小红公寓
+    ssl: true
+    encoding: UTF-8
+    connection-timeout: 5000
+    timeout: 5000
+    debug: true

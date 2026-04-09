@@ -1,0 +1,48 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: 小红公寓claw - 用户端服务(开发环境)
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/lease?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2b8
+    username: root
+    password: ${DB_PASSWORD:your_password_here}
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 60000
+      idle-timeout: 500000
+      max-lifetime: 540000
+      maximum-pool-size: 12
+      minimum-idle: 10
+      pool-name: SPHHikariPool
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+
+# 开发环境打印SQL语句，便于调试
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+springdoc:
+  default-flat-param-object: true
+
+aliyun:
+  sms:
+    access-key-id: ${ALIYUN_ACCESS_KEY_ID:your_access_key_id}
+    access-key-secret: ${ALIYUN_ACCESS_KEY_SECRET:your_access_key_secret}
+    endpoint: dysmsapi.aliyuncs.com
+
+app:
+  auth:
+    path-patterns:
+      include: /app/**,/mini/**
+      exclude: /app/login/**,/mini/login
+  cors:
+    allowed-origins:
+      - "*"

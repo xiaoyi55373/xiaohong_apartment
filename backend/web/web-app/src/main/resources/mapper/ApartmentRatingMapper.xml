@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaohong.lease.web.app.mapper.ApartmentRatingMapper">
+
+    <resultMap id="ratingItemVoMap" type="com.xiaohong.lease.web.app.vo.rating.RatingItemVo" autoMapping="true">
+        <id property="id" column="id"/>
+    </resultMap>
+
+    <select id="pageRatingItem" resultMap="ratingItemVoMap">
+        select
+            ar.id,
+            ar.user_id,
+            ar.apartment_id,
+            ar.overall_score,
+            ar.environment_score,
+            ar.traffic_score,
+            ar.facility_score,
+            ar.service_score,
+            ar.value_score,
+            ar.content,
+            ar.is_anonymous,
+            ar.create_time,
+            ui.nickname as user_nickname,
+            ui.avatar_url as user_avatar
+        from apartment_rating ar
+        left join user_info ui on ar.user_id = ui.id
+        where ar.apartment_id = #{apartmentId}
+          and ar.is_deleted = 0
+          and ar.status = 1
+        <choose>
+            <when test="filterType == 2">
+                and ar.overall_score &gt;= 4
+            </when>
+            <when test="filterType == 3">
+                and ar.overall_score &gt;= 3 and ar.overall_score &lt; 4
+            </when>
+            <when test="filterType == 4">
+                and ar.overall_score &lt; 3
+            </when>
+            <when test="filterType == 5">
+                and ar.content is not null and ar.content != ''
+            </when>
+        </choose>
+        <choose>
+            <when test="sortType == 'score'">
+                order by ar.overall_score desc, ar.create_time desc
+            </when>
+            <otherwise>
+                order by ar.create_time desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectRatingStatistics" resultType="java.util.HashMap">
+        select
+            avg(overall_score) as avg_overall_score,
+            avg(environment_score) as avg_environment_score,
+            avg(traffic_score) as avg_traffic_score,
+            avg(facility_score) as avg_facility_score,
+            avg(service_score) as avg_service_score,
+            avg(value_score) as avg_value_score,
+            count(*) as total_count
+        from apartment_rating
+        where apartment_id = #{apartmentId}
+          and is_deleted = 0
+          and status = 1
+    </select>
+
+    <select id="selectScoreDistribution" resultType="java.util.HashMap">
+        select
+            cast(overall_score as signed) as score_level,
+            count(*) as count
+        from apartment_rating
+        where apartment_id = #{apartmentId}
+          and is_deleted = 0
+          and status = 1
+        group by cast(overall_score as signed)
+        order by score_level
+    </select>
+
+    <select id="selectByUserIdAndApartmentId" resultType="com.xiaohong.lease.model.entity.ApartmentRating">
+        select id,
+               user_id,
+               apartment_id,
+               overall_score,
+               environment_score,
+               traffic_score,
+               facility_score,
+               service_score,
+               value_score,
+               content,
+               is_anonymous,
+               status,
+               create_time
+        from apartment_rating
+        where user_id = #{userId}
+          and apartment_id = #{apartmentId}
+          and is_deleted = 0
+          and status = 1
+        limit 1
+    </select>
+
+</mapper>

@@ -1,0 +1,358 @@
+/**
+ * 小红公寓claw - Element Plus 主题配置
+ * Element Plus Theme Configuration for Xiaohong Apartment Claw
+ * 
+ * @version 1.0.0
+ * @author 小红
+ * 
+ * 使用方法:
+ * 1. 在 main.ts 中引入: import './styles/element-plus-theme.scss'
+ * 2. 或在 vite.config.ts 中配置 css.preprocessorOptions.scss.additionalData
+ */
+
+/* ==================== 品牌色彩覆盖 ==================== */
+
+// 主色
+$--colors: (
+  'primary': (
+    'base': #FF6B6B,
+  ),
+  'success': (
+    'base': #1DD1A1,
+  ),
+  'warning': (
+    'base': #FF9F43,
+  ),
+  'danger': (
+    'base': #FF6B6B,
+  ),
+  'error': (
+    'base': #FF6B6B,
+  ),
+  'info': (
+    'base': #54A0FF,
+  ),
+);
+
+/* ==================== 颜色变量 ==================== */
+
+// 主色色阶
+$--color-primary: #FF6B6B;
+$--color-primary-light-1: #FF8383;
+$--color-primary-light-2: #FFA2A2;
+$--color-primary-light-3: #FFC1C1;
+$--color-primary-light-4: #FFE0E0;
+$--color-primary-light-5: #FFF0F0;
+$--color-primary-light-6: #FFF5F5;
+$--color-primary-light-7: #FFFAFA;
+$--color-primary-light-8: #FFFDFD;
+$--color-primary-light-9: #FFFEFE;
+$--color-primary-dark-1: #E55A5A;
+$--color-primary-dark-2: #CC4A4A;
+
+// 文字颜色
+$--color-text-primary: #1A1A2E;
+$--color-text-regular: #4A4A68;
+$--color-text-secondary: #8A8AA3;
+$--color-text-placeholder: #B8B8CC;
+
+// 边框颜色
+$--border-color-base: #E8E8EF;
+$--border-color-light: #F0F0F5;
+$--border-color-lighter: #F5F5FA;
+$--border-color-extra-light: #FAFAFC;
+
+// 背景颜色
+$--background-color-base: #F5F5FA;
+
+/* ==================== 字体配置 ==================== */
+
+// 字体家族
+$--font-path: 'fonts';
+$--font-display: 'swap';
+
+// 字体大小
+$--font-size-extra-large: 20px;
+$--font-size-large: 18px;
+$--font-size-medium: 16px;
+$--font-size-base: 14px;
+$--font-size-small: 13px;
+$--font-size-extra-small: 12px;
+
+// 字重
+$--font-weight-primary: 500;
+$--font-weight-secondary: 400;
+
+// 行高
+$--font-line-height-primary: 24px;
+$--font-line-height-secondary: 20px;
+
+/* ==================== 圆角配置 ==================== */
+
+$--border-radius-base: 8px;
+$--border-radius-small: 4px;
+$--border-radius-round: 20px;
+$--border-radius-circle: 100%;
+
+/* ==================== 阴影配置 ==================== */
+
+$--box-shadow-base: 0 4px 12px rgba(26, 26, 46, 0.08);
+$--box-shadow-light: 0 1px 2px rgba(26, 26, 46, 0.05);
+$--box-shadow-lighter: 0 2px 4px rgba(26, 26, 46, 0.04);
+$--box-shadow-dark: 0 8px 24px rgba(26, 26, 46, 0.12);
+
+/* ==================== 按钮配置 ==================== */
+
+// 默认按钮
+$--button-default-background-color: #FFFFFF;
+$--button-default-border-color: #E8E8EF;
+$--button-default-font-color: #1A1A2E;
+
+// 主要按钮
+$--button-primary-background-color: #FF6B6B;
+$--button-primary-border-color: #FF6B6B;
+$--button-primary-font-color: #FFFFFF;
+
+// 成功按钮
+$--button-success-background-color: #1DD1A1;
+$--button-success-border-color: #1DD1A1;
+$--button-success-font-color: #FFFFFF;
+
+// 警告按钮
+$--button-warning-background-color: #FF9F43;
+$--button-warning-border-color: #FF9F43;
+$--button-warning-font-color: #FFFFFF;
+
+// 危险按钮
+$--button-danger-background-color: #FF6B6B;
+$--button-danger-border-color: #FF6B6B;
+$--button-danger-font-color: #FFFFFF;
+
+// 信息按钮
+$--button-info-background-color: #8A8AA3;
+$--button-info-border-color: #8A8AA3;
+$--button-info-font-color: #FFFFFF;
+
+// 按钮尺寸
+$--button-padding-vertical: 12px;
+$--button-padding-horizontal: 24px;
+$--button-medium-padding-vertical: 10px;
+$--button-medium-padding-horizontal: 20px;
+$--button-small-padding-vertical: 9px;
+$--button-small-padding-horizontal: 15px;
+$--button-mini-padding-vertical: 7px;
+$--button-mini-padding-horizontal: 15px;
+
+// 按钮圆角
+$--button-border-radius: 8px;
+$--button-medium-border-radius: 8px;
+$--button-small-border-radius: 4px;
+$--button-mini-border-radius: 4px;
+
+/* ==================== 输入框配置 ==================== */
+
+$--input-font-size: 14px;
+$--input-font-color: #1A1A2E;
+$--input-width: 100%;
+$--input-height: 44px;
+$--input-border: 1px solid #E8E8EF;
+$--input-border-radius: 8px;
+$--input-background-color: #FFFFFF;
+$--input-placeholder-color: #B8B8CC;
+$--input-hover-border: #FF8383;
+$--input-clear-hover-color: #FF6B6B;
+$--input-focus-border: #FF6B6B;
+
+/* ==================== 卡片配置 ==================== */
+
+$--card-border-color: #E8E8EF;
+$--card-border-radius: 12px;
+$--card-padding: 16px;
+$--card-background-color: #FFFFFF;
+$--card-box-shadow: 0 4px 12px rgba(26, 26, 46, 0.08);
+
+/* ==================== 表格配置 ==================== */
+
+$--table-border-color: #E8E8EF;
+$--table-font-color: #4A4A68;
+$--table-header-font-color: #1A1A2E;
+$--table-row-hover-background-color: #FFF0F0;
+$--table-header-background-color: #F5F5FA;
+$--table-fixed-box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+
+/* ==================== 分页配置 ==================== */
+
+$--pagination-font-size: 14px;
+$--pagination-background-color: #FFFFFF;
+$--pagination-font-color: #4A4A68;
+$--pagination-border-radius: 8px;
+$--pagination-button-color: #4A4A68;
+$--pagination-button-width: 36px;
+$--pagination-button-height: 36px;
+$--pagination-button-disabled-color: #B8B8CC;
+$--pagination-button-disabled-background-color: #F5F5FA;
+$--pagination-hover-color: #FF6B6B;
+$--pagination-hover-background-color: #FFF0F0;
+$--pagination-active-color: #FFFFFF;
+$--pagination-active-background-color: #FF6B6B;
+
+/* ==================== 标签配置 ==================== */
+
+$--tag-padding: 4px 12px;
+$--tag-background-color: #FFF0F0;
+$--tag-font-size: 12px;
+$--tag-border-radius: 9999px;
+$--tag-primary-color: #FF6B6B;
+$--tag-success-color: #1DD1A1;
+$--tag-warning-color: #FF9F43;
+$--tag-danger-color: #FF6B6B;
+$--tag-info-color: #54A0FF;
+
+/* ==================== 菜单配置 ==================== */
+
+$--menu-item-font-size: 14px;
+$--menu-item-font-color: #4A4A68;
+$--menu-background-color: #FFFFFF;
+$--menu-item-hover-fill: #FFF0F0;
+$--menu-item-hover-color: #FF6B6B;
+$--menu-item-active-fill: #FFF0F0;
+$--menu-item-active-color: #FF6B6B;
+
+/* ==================== 对话框配置 ==================== */
+
+$--dialog-box-shadow: 0 16px 48px rgba(26, 26, 46, 0.16);
+$--dialog-border-radius: 16px;
+$--dialog-padding-primary: 24px;
+
+/* ==================== 消息提示配置 ==================== */
+
+$--message-background-color: #FFFFFF;
+$--message-padding: 15px 20px;
+$--message-min-width: 300px;
+$--message-box-shadow: 0 8px 24px rgba(26, 26, 46, 0.12);
+$--message-border-radius: 8px;
+$--message-icon-size: 20px;
+
+/* ==================== 通知配置 ==================== */
+
+$--notification-width: 330px;
+$--notification-padding: 16px 24px;
+$--notification-radius: 12px;
+$--notification-shadow: 0 8px 24px rgba(26, 26, 46, 0.12);
+$--notification-border-color: #E8E8EF;
+$--notification-icon-size: 24px;
+$--notification-group-margin-left: 16px;
+$--notification-group-margin-right: 8px;
+$--notification-content-font-size: 14px;
+$--notification-content-color: #4A4A68;
+$--notification-title-font-size: 16px;
+$--notification-title-color: #1A1A2E;
+
+/* ==================== 加载配置 ==================== */
+
+$--loading-spinner-size: 42px;
+$--loading-fullscreen-spinner-size: 50px;
+$--loading-color: #FF6B6B;
+
+/* ==================== 开关配置 ==================== */
+
+$--switch-on-color: #FF6B6B;
+$--switch-off-color: #E8E8EF;
+$--switch-core-border-radius: 10px;
+
+/* ==================== 滑块配置 ==================== */
+
+$--slider-main-background-color: #FF6B6B;
+$--slider-runway-background-color: #E8E8EF;
+$--slider-button-background-color: #FF6B6B;
+$--slider-button-hover-color: #E55A5A;
+$--slider-stop-background-color: #FFFFFF;
+$--slider-margin: 16px 0;
+$--slider-border-radius: 3px;
+$--slider-height: 6px;
+$--slider-button-size: 16px;
+$--slider-button-wrapper-size: 36px;
+$--slider-button-wrapper-offset: -15px;
+
+/* ==================== 时间选择器配置 ==================== */
+
+$--datepicker-font-color: #4A4A68;
+$--datepicker-off-font-color: #B8B8CC;
+$--datepicker-header-font-color: #1A1A2E;
+$--datepicker-icon-color: #8A8AA3;
+$--datepicker-border-color: #E8E8EF;
+$--datepicker-inner-border-color: #F0F0F5;
+$--datepicker-inrange-background-color: #FFF0F0;
+$--datepicker-inrange-hover-background-color: #FFE0E0;
+$--datepicker-active-color: #FF6B6B;
+$--datepicker-hover-font-color: #FF6B6B;
+$--datepicker-cell-hover-color: #FFF0F0;
+
+/* ==================== 导入 Element Plus 变量 ==================== */
+
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: $--colors,
+  $font-size: (
+    'extra-large': $--font-size-extra-large,
+    'large': $--font-size-large,
+    'medium': $--font-size-medium,
+    'base': $--font-size-base,
+    'small': $--font-size-small,
+    'extra-small': $--font-size-extra-small,
+  ),
+  $border-radius: (
+    'base': $--border-radius-base,
+    'small': $--border-radius-small,
+    'round': $--border-radius-round,
+    'circle': $--border-radius-circle,
+  ),
+  $box-shadow: (
+    'base': $--box-shadow-base,
+    'light': $--box-shadow-light,
+    'lighter': $--box-shadow-lighter,
+    'dark': $--box-shadow-dark,
+  ),
+  $text-color: (
+    'primary': $--color-text-primary,
+    'regular': $--color-text-regular,
+    'secondary': $--color-text-secondary,
+    'placeholder': $--color-text-placeholder,
+  ),
+  $border-color: (
+    'base': $--border-color-base,
+    'light': $--border-color-light,
+    'lighter': $--border-color-lighter,
+    'extra-light': $--border-color-extra-light,
+  ),
+  $fill-color: (
+    'base': $--background-color-base,
+  ),
+);
+
+/* ==================== 全局样式覆盖 ==================== */
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F5FA;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C1C1D1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A1A1B8;
+}
+
+// 选中文本样式
+::selection {
+  background: rgba(255, 107, 107, 0.2);
+  color: #1A1A2E;
+}

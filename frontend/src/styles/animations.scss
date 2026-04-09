@@ -1,0 +1,633 @@
+/**
+ * 小红公寓claw - 动画过渡库
+ * @description 页面切换、元素动画效果
+ * @author 小红
+ * @version 1.0.0
+ */
+
+// ==================== 基础变量 ====================
+
+// 过渡时间
+$duration-fast: 150ms;      // 微交互
+$duration-normal: 250ms;    // 标准过渡
+$duration-slow: 350ms;      // 复杂动画
+$duration-slower: 500ms;    // 页面切换
+
+// 缓动函数
+$ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+$ease-in: cubic-bezier(0.4, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+$ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+$ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+// 品牌色
+$brand-primary: #FF6B6B;
+$brand-secondary: #FF9F43;
+
+// ==================== Keyframes 动画定义 ====================
+
+// 淡入
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// 淡出
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+// 上滑淡入
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 下滑淡入
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 左滑淡入
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// 右滑淡入
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// 缩放淡入
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// 缩放淡出
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+// 脉冲（用于提示）
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+// 脉冲光环
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+// 弹跳
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+// 摇摆
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+// 旋转
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// 闪烁
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+// 弹性进入
+@keyframes elasticIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// 翻转进入
+@keyframes flipIn {
+  from {
+    opacity: 0;
+    transform: perspective(400px) rotateY(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(400px) rotateY(0);
+  }
+}
+
+// 浮动（用于装饰元素）
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+// 浮动延迟版本
+@keyframes floatDelayed {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+}
+
+// 渐变背景动画
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+// 加载动画 - 圆点跳跃
+@keyframes dotJump {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+// 加载动画 - 品牌色渐变
+@keyframes brandGradient {
+  0% { background-color: $brand-primary; }
+  50% { background-color: $brand-secondary; }
+  100% { background-color: $brand-primary; }
+}
+
+// 扫描线效果
+@keyframes scanLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+// 波纹效果
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+// 心跳
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+// ==================== 页面过渡动画 ====================
+
+// 页面切换 - 淡入淡出
+.page-fade {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity $duration-slower $ease-default;
+  }
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+}
+
+// 页面切换 - 滑动（从左）
+.page-slide-left {
+  &-enter-active,
+  &-leave-active {
+    transition: all $duration-slower $ease-default;
+  }
+  &-enter-from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  &-leave-to {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+
+// 页面切换 - 滑动（从右）
+.page-slide-right {
+  &-enter-active,
+  &-leave-active {
+    transition: all $duration-slower $ease-default;
+  }
+  &-enter-from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  &-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+// 页面切换 - 缩放
+.page-zoom {
+  &-enter-active,
+  &-leave-active {
+    transition: all $duration-slower $ease-default;
+  }
+  &-enter-from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  &-leave-to {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+// ==================== 组件动画类 ====================
+
+// 基础动画类
+.animate {
+  animation-fill-mode: both;
+  
+  // 持续时间
+  &-fast { animation-duration: $duration-fast; }
+  &-normal { animation-duration: $duration-normal; }
+  &-slow { animation-duration: $duration-slow; }
+  &-slower { animation-duration: $duration-slower; }
+  
+  // 缓动函数
+  &-ease { animation-timing-function: $ease-default; }
+  &-ease-in { animation-timing-function: $ease-in; }
+  &-ease-out { animation-timing-function: $ease-out; }
+  &-bounce { animation-timing-function: $ease-bounce; }
+  &-spring { animation-timing-function: $ease-spring; }
+  
+  // 循环
+  &-infinite { animation-iteration-count: infinite; }
+  
+  // 延迟
+  &-delay-1 { animation-delay: 0.1s; }
+  &-delay-2 { animation-delay: 0.2s; }
+  &-delay-3 { animation-delay: 0.3s; }
+  &-delay-4 { animation-delay: 0.4s; }
+  &-delay-5 { animation-delay: 0.5s; }
+}
+
+// 具体动画效果
+.animate-fade-in { animation-name: fadeIn; }
+.animate-fade-out { animation-name: fadeOut; }
+.animate-slide-up { animation-name: slideUp; }
+.animate-slide-down { animation-name: slideDown; }
+.animate-slide-left { animation-name: slideLeft; }
+.animate-slide-right { animation-name: slideRight; }
+.animate-zoom-in { animation-name: zoomIn; }
+.animate-zoom-out { animation-name: zoomOut; }
+.animate-pulse { animation-name: pulse; }
+.animate-bounce { animation-name: bounce; }
+.animate-shake { animation-name: shake; }
+.animate-spin { animation-name: spin; }
+.animate-flash { animation-name: flash; }
+.animate-elastic-in { animation-name: elasticIn; }
+.animate-flip-in { animation-name: flipIn; }
+.animate-float { animation-name: float; }
+.animate-heartbeat { animation-name: heartbeat; }
+
+// ==================== 列表动画 ====================
+
+// 列表项进入动画
+.list-item {
+  &-enter-active {
+    transition: all $duration-normal $ease-default;
+  }
+  &-leave-active {
+    transition: all $duration-normal $ease-in;
+    position: absolute;
+  }
+  &-move {
+    transition: transform $duration-slow $ease-default;
+  }
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+// 交错动画（用于列表）
+.stagger {
+  @for $i from 1 through 20 {
+    &-#{$i} {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+}
+
+// ==================== 特殊效果 ====================
+
+// 悬浮效果
+.hover-lift {
+  transition: transform $duration-normal $ease-default, 
+              box-shadow $duration-normal $ease-default;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(26, 26, 46, 0.12);
+  }
+}
+
+// 缩放效果
+.hover-scale {
+  transition: transform $duration-normal $ease-default;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// 品牌色发光
+.hover-glow {
+  transition: box-shadow $duration-normal $ease-default;
+  
+  &:hover {
+    box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3);
+  }
+}
+
+// 按钮点击效果
+.btn-click {
+  transition: transform $duration-fast $ease-default;
+  
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+// 链接下划线动画
+.link-underline {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: $brand-primary;
+    transition: width $duration-normal $ease-default;
+  }
+  
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+// 图片悬停放大
+.img-zoom {
+  overflow: hidden;
+  
+  img {
+    transition: transform $duration-slow $ease-default;
+  }
+  
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+// 卡片翻转
+.card-flip {
+  perspective: 1000px;
+  
+  &-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s $ease-default;
+    transform-style: preserve-3d;
+  }
+  
+  &:hover &-inner {
+    transform: rotateY(180deg);
+  }
+  
+  &-front,
+  &-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  &-back {
+    transform: rotateY(180deg);
+  }
+}
+
+// ==================== 加载状态 ====================
+
+// 骨架屏闪烁
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+// 加载圆点
+.loading-dots {
+  display: inline-flex;
+  gap: 4px;
+  
+  span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $brand-primary;
+    animation: dotJump 1.4s ease-in-out infinite both;
+    
+    &:nth-child(1) { animation-delay: -0.32s; }
+    &:nth-child(2) { animation-delay: -0.16s; }
+    &:nth-child(3) { animation-delay: 0s; }
+  }
+}
+
+// 品牌加载动画
+.loading-brand {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  animation: brandGradient 2s ease-in-out infinite;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #fff;
+    animation: spin 1s linear infinite;
+  }
+}
+
+// ==================== 滚动动画 ====================
+
+// 滚动显示
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity $duration-slow $ease-default,
+              transform $duration-slow $ease-default;
+  
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 滚动显示 - 从左
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity $duration-slow $ease-default,
+              transform $duration-slow $ease-default;
+  
+  &.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// 滚动显示 - 从右
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity $duration-slow $ease-default,
+              transform $duration-slow $ease-default;
+  
+  &.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// 滚动显示 - 缩放
+.scroll-reveal-zoom {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity $duration-slow $ease-default,
+              transform $duration-slow $ease-default;
+  
+  &.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ==================== 工具类 ====================
+
+// 初始隐藏（用于动画）
+.init-hidden {
+  opacity: 0;
+}
+
+// 动画暂停
+.paused {
+  animation-play-state: paused;
+}
+
+// 减少动画（无障碍）
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

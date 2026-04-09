@@ -1,0 +1,726 @@
+/**
+ * 小红公寓claw - Vant 主题配置
+ * Vant Theme Configuration for Xiaohong Apartment Claw
+ * 
+ * @version 1.0.0
+ * @author 小红
+ * 
+ * 使用方法:
+ * 1. H5项目: 在 main.ts 中引入 CSS 变量
+ * 2. 小程序项目: 在 app.vue 的 style 中引入
+ * 
+ * 注意: Vant 使用 CSS 变量进行主题定制
+ */
+
+/* ==================== 基础变量 ==================== */
+
+:root,
+page {
+  /* 主色 */
+  --van-primary-color: #FF6B6B;
+  --van-primary-color-light: #FF8383;
+  --van-primary-color-dark: #E55A5A;
+  
+  /* 成功色 */
+  --van-success-color: #1DD1A1;
+  
+  /* 警告色 */
+  --van-warning-color: #FF9F43;
+  
+  /* 危险色 */
+  --van-danger-color: #FF6B6B;
+  
+  /* 信息色 */
+  --van-info-color: #54A0FF;
+  
+  /* 文字颜色 */
+  --van-text-color: #1A1A2E;
+  --van-text-color-2: #4A4A68;
+  --van-text-color-3: #8A8AA3;
+  
+  /* 背景颜色 */
+  --van-background: #F5F5FA;
+  --van-background-2: #FFFFFF;
+  
+  /* 边框颜色 */
+  --van-border-color: #E8E8EF;
+  
+  /* 圆角 */
+  --van-radius-sm: 4px;
+  --van-radius-md: 8px;
+  --van-radius-lg: 12px;
+  --van-radius-xl: 16px;
+  --van-radius-max: 9999px;
+  
+  /* 字体 */
+  --van-font-size-xs: 10px;
+  --van-font-size-sm: 12px;
+  --van-font-size-md: 14px;
+  --van-font-size-lg: 16px;
+  --van-font-size-xl: 18px;
+  --van-font-size-2xl: 20px;
+  --van-font-size-3xl: 24px;
+  
+  /* 字重 */
+  --van-font-weight-bold: 700;
+  --van-font-weight-semibold: 600;
+  --van-font-weight-medium: 500;
+  --van-font-weight-normal: 400;
+  
+  /* 行高 */
+  --van-line-height-xs: 14px;
+  --van-line-height-sm: 18px;
+  --van-line-height-md: 20px;
+  --van-line-height-lg: 22px;
+  --van-line-height-xl: 26px;
+  
+  /* 间距 */
+  --van-padding-base: 4px;
+  --van-padding-xs: 8px;
+  --van-padding-sm: 12px;
+  --van-padding-md: 16px;
+  --van-padding-lg: 24px;
+  --van-padding-xl: 32px;
+  
+  /* 动画 */
+  --van-duration-fast: 150ms;
+  --van-duration-normal: 250ms;
+  --van-duration-slow: 350ms;
+  --van-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --van-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --van-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --van-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ==================== Button 按钮 ==================== */
+
+:root,
+page {
+  --van-button-mini-height: 24px;
+  --van-button-mini-padding: 0 8px;
+  --van-button-mini-font-size: 10px;
+  
+  --van-button-small-height: 32px;
+  --van-button-small-padding: 0 12px;
+  --van-button-small-font-size: 12px;
+  
+  --van-button-normal-padding: 0 16px;
+  --van-button-normal-font-size: 14px;
+  
+  --van-button-large-height: 50px;
+  --van-button-large-padding: 0 24px;
+  --van-button-large-font-size: 16px;
+  
+  --van-button-default-height: 44px;
+  --van-button-default-line-height: 1.5;
+  --van-button-default-font-size: 14px;
+  --van-button-default-color: #1A1A2E;
+  --van-button-default-background: #FFFFFF;
+  --van-button-default-border-color: #E8E8EF;
+  
+  --van-button-primary-color: #FFFFFF;
+  --van-button-primary-background: #FF6B6B;
+  --van-button-primary-border-color: #FF6B6B;
+  
+  --van-button-success-color: #FFFFFF;
+  --van-button-success-background: #1DD1A1;
+  --van-button-success-border-color: #1DD1A1;
+  
+  --van-button-danger-color: #FFFFFF;
+  --van-button-danger-background: #FF6B6B;
+  --van-button-danger-border-color: #FF6B6B;
+  
+  --van-button-warning-color: #FFFFFF;
+  --van-button-warning-background: #FF9F43;
+  --van-button-warning-border-color: #FF9F43;
+  
+  --van-button-border-width: 1px;
+  --van-button-border-radius: 8px;
+  --van-button-round-radius: 9999px;
+  --van-button-plain-background: #FFFFFF;
+  
+  --van-button-disabled-opacity: 0.5;
+}
+
+/* ==================== Cell 单元格 ==================== */
+
+:root,
+page {
+  --van-cell-font-size: 14px;
+  --van-cell-line-height: 24px;
+  --van-cell-vertical-padding: 12px;
+  --van-cell-horizontal-padding: 16px;
+  --van-cell-text-color: #1A1A2E;
+  --van-cell-label-font-size: 12px;
+  --van-cell-label-line-height: 18px;
+  --van-cell-label-color: #8A8AA3;
+  --van-cell-label-margin-top: 4px;
+  --van-cell-value-color: #4A4A68;
+  --van-cell-icon-size: 16px;
+  --van-cell-right-icon-color: #8A8AA3;
+  --van-cell-large-vertical-padding: 16px;
+  --van-cell-large-title-font-size: 16px;
+  --van-cell-large-label-font-size: 14px;
+  --van-cell-background: #FFFFFF;
+  --van-cell-border-color: #E8E8EF;
+  --van-cell-active-color: #F5F5FA;
+  --van-cell-required-color: #FF6B6B;
+}
+
+/* ==================== Field 输入框 ==================== */
+
+:root,
+page {
+  --van-field-label-width: 90px;
+  --van-field-label-color: #1A1A2E;
+  --van-field-label-margin-right: 16px;
+  --van-field-input-text-color: #1A1A2E;
+  --van-field-input-error-text-color: #FF6B6B;
+  --van-field-input-disabled-text-color: #B8B8CC;
+  --van-field-placeholder-text-color: #B8B8CC;
+  --van-field-icon-size: 16px;
+  --van-field-clear-icon-size: 16px;
+  --van-field-clear-icon-color: #8A8AA3;
+  --van-field-right-icon-color: #8A8AA3;
+  --van-field-error-message-color: #FF6B6B;
+  --van-field-error-message-font-size: 12px;
+  --van-field-text-area-min-height: 60px;
+  --van-field-word-limit-color: #8A8AA3;
+  --van-field-word-limit-font-size: 12px;
+  --van-field-word-limit-line-height: 16px;
+  --van-field-disabled-text-color: #B8B8CC;
+}
+
+/* ==================== NavBar 导航栏 ==================== */
+
+:root,
+page {
+  --van-nav-bar-height: 46px;
+  --van-nav-bar-background: #FFFFFF;
+  --van-nav-bar-arrow-size: 20px;
+  --van-nav-bar-icon-color: #1A1A2E;
+  --van-nav-bar-text-color: #1A1A2E;
+  --van-nav-bar-title-font-size: 16px;
+  --van-nav-bar-title-text-color: #1A1A2E;
+}
+
+/* ==================== TabBar 标签栏 ==================== */
+
+:root,
+page {
+  --van-tabbar-height: 50px;
+  --van-tabbar-background: #FFFFFF;
+  --van-tabbar-item-font-size: 10px;
+  --van-tabbar-item-text-color: #8A8AA3;
+  --van-tabbar-item-active-color: #FF6B6B;
+  --van-tabbar-item-active-background: #FFFFFF;
+  --van-tabbar-item-line-height: 1;
+  --van-tabbar-item-icon-size: 22px;
+  --van-tabbar-item-margin-bottom: 4px;
+}
+
+/* ==================== Tabs 标签页 ==================== */
+
+:root,
+page {
+  --van-tab-text-color: #8A8AA3;
+  --van-tab-active-text-color: #1A1A2E;
+  --van-tab-disabled-text-color: #B8B8CC;
+  --van-tab-font-size: 14px;
+  --van-tab-line-height: 20px;
+  --van-tabs-default-color: #FF6B6B;
+  --van-tabs-line-height: 44px;
+  --van-tabs-card-height: 30px;
+  --van-tabs-nav-background: #FFFFFF;
+  --van-tabs-bottom-bar-width: 40px;
+  --van-tabs-bottom-bar-height: 3px;
+  --van-tabs-bottom-bar-color: #FF6B6B;
+}
+
+/* ==================== Card 卡片 ==================== */
+
+:root,
+page {
+  --van-card-padding: 12px 16px;
+  --van-card-font-size: 12px;
+  --van-card-text-color: #4A4A68;
+  --van-card-background: #FFFFFF;
+  --van-card-thumb-size: 88px;
+  --van-card-thumb-radius: 8px;
+  --van-card-title-font-size: 14px;
+  --van-card-title-line-height: 20px;
+  --van-card-desc-color: #8A8AA3;
+  --van-card-desc-line-height: 18px;
+  --van-card-price-color: #FF6B6B;
+  --van-card-price-font-size: 14px;
+  --van-card-price-integer-font-size: 18px;
+  --van-card-price-font-weight: 700;
+  --van-card-origin-price-color: #8A8AA3;
+  --van-card-origin-price-font-size: 10px;
+  --van-card-tag-padding: 2px 6px;
+  --van-card-tag-color: #FFFFFF;
+  --van-card-tag-background: #FF6B6B;
+  --van-card-tag-font-weight: 700;
+  --van-card-tag-font-size: 10px;
+  --van-card-tag-line-height: 12px;
+  --van-card-tag-border-radius: 9999px;
+}
+
+/* ==================== Tag 标签 ==================== */
+
+:root,
+page {
+  --van-tag-padding: 2px 8px;
+  --van-tag-text-color: #FFFFFF;
+  --van-tag-font-size: 12px;
+  --van-tag-line-height: 16px;
+  --van-tag-border-radius: 9999px;
+  --van-tag-round-radius: 9999px;
+  --van-tag-danger-color: #FF6B6B;
+  --van-tag-primary-color: #FF6B6B;
+  --van-tag-success-color: #1DD1A1;
+  --van-tag-warning-color: #FF9F43;
+  --van-tag-default-color: #8A8AA3;
+  --van-tag-plain-background: #FFFFFF;
+}
+
+/* ==================== Badge 徽标 ==================== */
+
+:root,
+page {
+  --van-badge-size: 16px;
+  --van-badge-color: #FFFFFF;
+  --van-badge-padding: 0 4px;
+  --van-badge-font-size: 12px;
+  --van-badge-font-weight: 700;
+  --van-badge-border-width: 1px;
+  --van-badge-background: #FF6B6B;
+  --van-badge-dot-color: #FF6B6B;
+  --van-badge-dot-size: 8px;
+  --van-badge-font-family: -apple-system-font, Helvetica Neue, Arial, sans-serif;
+}
+
+/* ==================== Image 图片 ==================== */
+
+:root,
+page {
+  --van-image-placeholder-text-color: #8A8AA3;
+  --van-image-placeholder-font-size: 14px;
+  --van-image-placeholder-background: #F5F5FA;
+  --van-image-loading-icon-size: 22px;
+  --van-image-loading-icon-color: #8A8AA3;
+  --van-image-error-icon-size: 22px;
+  --van-image-error-icon-color: #8A8AA3;
+}
+
+/* ==================== Loading 加载 ==================== */
+
+:root,
+page {
+  --van-loading-text-color: #8A8AA3;
+  --van-loading-text-font-size: 14px;
+  --van-loading-spinner-color: #FF6B6B;
+  --van-loading-spinner-size: 30px;
+  --van-loading-spinner-animation-duration: 0.8s;
+}
+
+/* ==================== Toast 轻提示 ==================== */
+
+:root,
+page {
+  --van-toast-max-width: 70%;
+  --van-toast-font-size: 14px;
+  --van-toast-text-color: #FFFFFF;
+  --van-toast-line-height: 20px;
+  --van-toast-border-radius: 8px;
+  --van-toast-background: rgba(0, 0, 0, 0.7);
+  --van-toast-icon-size: 40px;
+  --van-toast-text-min-width: 96px;
+  --van-toast-text-padding: 12px 16px;
+  --van-toast-default-padding: 16px;
+  --van-toast-default-width: 88px;
+  --van-toast-default-min-height: 88px;
+  --van-toast-position-top-distance: 20%;
+  --van-toast-position-bottom-distance: 20%;
+}
+
+/* ==================== Dialog 弹窗 ==================== */
+
+:root,
+page {
+  --van-dialog-width: 320px;
+  --van-dialog-small-screen-width: 90%;
+  --van-dialog-font-size: 16px;
+  --van-dialog-transition: transform 0.3s;
+  --van-dialog-border-radius: 16px;
+  --van-dialog-background: #FFFFFF;
+  --van-dialog-header-font-weight: 700;
+  --van-dialog-header-line-height: 24px;
+  --van-dialog-header-padding-top: 24px;
+  --van-dialog-header-isolated-padding: 24px;
+  --van-dialog-message-padding: 24px;
+  --van-dialog-message-font-size: 14px;
+  --van-dialog-message-line-height: 20px;
+  --van-dialog-message-max-height: 60vh;
+  --van-dialog-has-title-message-text-color: #4A4A68;
+  --van-dialog-has-title-message-padding-top: 8px;
+  --van-dialog-button-height: 48px;
+  --van-dialog-round-button-height: 36px;
+  --van-dialog-confirm-button-text-color: #FF6B6B;
+}
+
+/* ==================== ActionSheet 动作面板 ==================== */
+
+:root,
+page {
+  --van-action-sheet-max-height: 80%;
+  --van-action-sheet-header-height: 48px;
+  --van-action-sheet-header-font-size: 16px;
+  --van-action-sheet-description-color: #8A8AA3;
+  --van-action-sheet-description-font-size: 14px;
+  --van-action-sheet-description-line-height: 20px;
+  --van-action-sheet-item-background: #FFFFFF;
+  --van-action-sheet-item-font-size: 16px;
+  --van-action-sheet-item-line-height: 22px;
+  --van-action-sheet-item-text-color: #1A1A2E;
+  --van-action-sheet-item-disabled-text-color: #B8B8CC;
+  --van-action-sheet-subname-color: #8A8AA3;
+  --van-action-sheet-subname-font-size: 12px;
+  --van-action-sheet-subname-line-height: 18px;
+  --van-action-sheet-close-icon-size: 22px;
+  --van-action-sheet-close-icon-color: #8A8AA3;
+  --van-action-sheet-close-icon-padding: 0 12px;
+  --van-action-sheet-cancel-text-color: #4A4A68;
+  --van-action-sheet-cancel-padding-top: 8px;
+  --van-action-sheet-cancel-padding-color: #F5F5FA;
+  --van-action-sheet-loading-icon-size: 22px;
+}
+
+/* ==================== Picker 选择器 ==================== */
+
+:root,
+page {
+  --van-picker-background: #FFFFFF;
+  --van-picker-toolbar-height: 44px;
+  --van-picker-title-font-size: 16px;
+  --van-picker-title-line-height: 20px;
+  --van-picker-action-padding: 0 16px;
+  --van-picker-action-font-size: 14px;
+  --van-picker-confirm-action-color: #FF6B6B;
+  --van-picker-cancel-action-color: #8A8AA3;
+  --van-picker-option-font-size: 16px;
+  --van-picker-option-padding: 0 16px;
+  --van-picker-option-text-color: #1A1A2E;
+  --van-picker-option-disabled-opacity: 0.3;
+  --van-picker-loading-icon-color: #FF6B6B;
+  --van-picker-loading-mask-color: rgba(255, 255, 255, 0.9);
+  --van-picker-option-selected-text-color: #1A1A2E;
+  --van-picker-option-selected-font-weight: 700;
+}
+
+/* ==================== Search 搜索 ==================== */
+
+:root,
+page {
+  --van-search-padding: 10px 12px;
+  --van-search-background: #F5F5FA;
+  --van-search-content-background: #FFFFFF;
+  --van-search-input-height: 34px;
+  --van-search-label-padding: 0 5px;
+  --van-search-label-color: #1A1A2E;
+  --van-search-label-font-size: 14px;
+  --van-search-left-icon-color: #8A8AA3;
+  --van-search-action-padding: 0 8px;
+  --van-search-action-text-color: #1A1A2E;
+  --van-search-action-font-size: 14px;
+}
+
+/* ==================== Stepper 步进器 ==================== */
+
+:root,
+page {
+  --van-stepper-active-color: #E8E8EF;
+  --van-stepper-background: #F5F5FA;
+  --van-stepper-button-icon-color: #1A1A2E;
+  --van-stepper-button-disabled-color: #F5F5FA;
+  --van-stepper-button-disabled-icon-color: #B8B8CC;
+  --van-stepper-button-round-theme-color: #FF6B6B;
+  --van-stepper-input-width: 32px;
+  --van-stepper-input-height: 28px;
+  --van-stepper-input-font-size: 14px;
+  --van-stepper-input-line-height: 28px;
+  --van-stepper-input-text-color: #1A1A2E;
+  --van-stepper-input-disabled-text-color: #B8B8CC;
+  --van-stepper-input-disabled-background: #F5F5FA;
+  --van-stepper-border-radius: 4px;
+}
+
+/* ==================== Switch 开关 ==================== */
+
+:root,
+page {
+  --van-switch-size: 26px;
+  --van-switch-width: 48px;
+  --van-switch-height: 26px;
+  --van-switch-node-size: 22px;
+  --van-switch-node-background: #FFFFFF;
+  --van-switch-node-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --van-switch-background: #E8E8EF;
+  --van-switch-on-background: #FF6B6B;
+  --van-switch-transition-duration: 0.3s;
+  --van-switch-disabled-opacity: 0.4;
+  --van-switch-border-radius: 9999px;
+}
+
+/* ==================== Uploader 文件上传 ==================== */
+
+:root,
+page {
+  --van-uploader-size: 80px;
+  --van-uploader-icon-size: 24px;
+  --van-uploader-icon-color: #8A8AA3;
+  --van-uploader-text-color: #8A8AA3;
+  --van-uploader-text-font-size: 12px;
+  --van-uploader-upload-background: #F5F5FA;
+  --van-uploader-upload-active-color: #F5F5FA;
+  --van-uploader-delete-color: #8A8AA3;
+  --van-uploader-delete-icon-size: 14px;
+  --van-uploader-delete-background: #FFFFFF;
+  --van-uploader-file-background: #F5F5FA;
+  --van-uploader-file-icon-size: 20px;
+  --van-uploader-file-icon-color: #8A8AA3;
+  --van-uploader-file-name-padding: 0 4px;
+  --van-uploader-file-name-margin-top: 4px;
+  --van-uploader-file-name-font-size: 12px;
+  --van-uploader-file-name-text-color: #4A4A68;
+  --van-uploader-mask-background: rgba(50, 50, 51, 0.88);
+  --van-uploader-mask-icon-size: 22px;
+  --van-uploader-mask-message-font-size: 12px;
+  --van-uploader-mask-message-line-height: 14px;
+  --van-uploader-loading-icon-size: 22px;
+  --van-uploader-loading-icon-color: #FFFFFF;
+  --van-uploader-disabled-opacity: 0.5;
+}
+
+/* ==================== DropdownMenu 下拉菜单 ==================== */
+
+:root,
+page {
+  --van-dropdown-menu-height: 48px;
+  --van-dropdown-menu-background: #FFFFFF;
+  --van-dropdown-menu-box-shadow: 0 2px 12px rgba(100, 101, 102, 0.12);
+  --van-dropdown-menu-title-font-size: 15px;
+  --van-dropdown-menu-title-text-color: #1A1A2E;
+  --van-dropdown-menu-title-active-text-color: #FF6B6B;
+  --van-dropdown-menu-title-disabled-text-color: #B8B8CC;
+  --van-dropdown-menu-title-padding: 0 8px;
+  --van-dropdown-menu-title-line-height: 18px;
+  --van-dropdown-menu-option-active-color: #FF6B6B;
+  --van-dropdown-menu-option-disabled-color: #B8B8CC;
+  --van-dropdown-menu-content-max-height: 80%;
+}
+
+/* ==================== Empty 空状态 ==================== */
+
+:root,
+page {
+  --van-empty-padding: 32px 0;
+  --van-empty-image-size: 160px;
+  --van-empty-description-margin-top: 16px;
+  --van-empty-description-padding: 0 40px;
+  --van-empty-description-color: #8A8AA3;
+  --van-empty-description-font-size: 14px;
+  --van-empty-description-line-height: 20px;
+  --van-empty-bottom-margin-top: 24px;
+}
+
+/* ==================== List 列表 ==================== */
+
+:root,
+page {
+  --van-list-icon-margin-right: 5px;
+  --van-list-text-color: #8A8AA3;
+  --van-list-text-font-size: 14px;
+  --van-list-text-line-height: 50px;
+}
+
+/* ==================== PullRefresh 下拉刷新 ==================== */
+
+:root,
+page {
+  --van-pull-refresh-head-height: 50px;
+  --van-pull-refresh-head-font-size: 14px;
+  --van-pull-refresh-head-text-color: #8A8AA3;
+}
+
+/* ==================== Swipe 轮播 ==================== */
+
+:root,
+page {
+  --van-swipe-indicator-size: 6px;
+  --van-swipe-indicator-margin: 4px;
+  --van-swipe-indicator-active-opacity: 1;
+  --van-swipe-indicator-inactive-opacity: 0.3;
+  --van-swipe-indicator-active-background: #FF6B6B;
+  --van-swipe-indicator-inactive-background: #FFFFFF;
+  --van-swipe-indicator-border-radius: 9999px;
+}
+
+/* ==================== Skeleton 骨架屏 ==================== */
+
+:root,
+page {
+  --van-skeleton-row-height: 16px;
+  --van-skeleton-row-background: #F5F5FA;
+  --van-skeleton-row-margin-top: 12px;
+  --van-skeleton-title-width: 40%;
+  --van-skeleton-avatar-size: 32px;
+  --van-skeleton-avatar-background: #F5F5FA;
+  --van-skeleton-animation-duration: 1.2s;
+}
+
+/* ==================== Grid 宫格 ==================== */
+
+:root,
+page {
+  --van-grid-item-content-padding: 16px 8px;
+  --van-grid-item-content-background: #FFFFFF;
+  --van-grid-item-content-active-color: #F5F5FA;
+  --van-grid-item-icon-size: 28px;
+  --van-grid-item-text-color: #4A4A68;
+  --van-grid-item-text-font-size: 12px;
+}
+
+/* ==================== Divider 分割线 ==================== */
+
+:root,
+page {
+  --van-divider-margin: 16px 0;
+  --van-divider-text-color: #8A8AA3;
+  --van-divider-font-size: 14px;
+  --van-divider-line-height: 24px;
+  --van-divider-border-color: #E8E8EF;
+  --van-divider-content-padding: 16px;
+  --van-divider-content-left-width: 10%;
+  --van-divider-content-right-width: 10%;
+}
+
+/* ==================== NoticeBar 通知栏 ==================== */
+
+:root,
+page {
+  --van-notice-bar-height: 40px;
+  --van-notice-bar-padding: 0 16px;
+  --van-notice-bar-wrapable-padding: 8px 16px;
+  --van-notice-bar-text-color: #FF9F43;
+  --van-notice-bar-font-size: 14px;
+  --van-notice-bar-line-height: 24px;
+  --van-notice-bar-background: #FFF5EB;
+  --van-notice-bar-icon-size: 16px;
+  --van-notice-bar-icon-min-width: 22px;
+}
+
+/* ==================== Popover 气泡弹出框 ==================== */
+
+:root,
+page {
+  --van-popover-arrow-size: 6px;
+  --van-popover-border-radius: 8px;
+  --van-popover-action-width: 128px;
+  --van-popover-action-height: 44px;
+  --van-popover-action-font-size: 14px;
+  --van-popover-action-line-height: 22px;
+  --van-popover-action-icon-size: 20px;
+  --van-popover-light-text-color: #1A1A2E;
+  --van-popover-light-background: #FFFFFF;
+  --van-popover-light-action-disabled-text-color: #B8B8CC;
+  --van-popover-dark-text-color: #FFFFFF;
+  --van-popover-dark-background: #4A4A68;
+  --van-popover-dark-action-disabled-text-color: #B8B8CC;
+}
+
+/* ==================== Progress 进度条 ==================== */
+
+:root,
+page {
+  --van-progress-height: 4px;
+  --van-progress-color: #FF6B6B;
+  --van-progress-inactive-color: #E8E8EF;
+  --van-progress-background: #E8E8EF;
+  --van-progress-pivot-padding: 0 5px;
+  --van-progress-pivot-text-color: #FFFFFF;
+  --van-progress-pivot-font-size: 10px;
+  --van-progress-pivot-line-height: 1.6;
+  --van-progress-pivot-background: #FF6B6B;
+}
+
+/* ==================== Circle 环形进度条 ==================== */
+
+:root,
+page {
+  --van-circle-text-color: #1A1A2E;
+}
+
+/* ==================== IndexBar 索引栏 ==================== */
+
+:root,
+page {
+  --van-index-bar-sidebar-z-index: 1;
+  --van-index-bar-index-font-size: 10px;
+  --van-index-bar-index-line-height: 14px;
+  --van-index-bar-index-active-color: #FF6B6B;
+  --van-index-anchor-padding: 0 16px;
+  --van-index-anchor-text-color: #1A1A2E;
+  --van-index-anchor-font-weight: 500;
+  --van-index-anchor-font-size: 14px;
+  --van-index-anchor-line-height: 32px;
+  --van-index-anchor-background: #F5F5FA;
+  --van-index-anchor-sticky-text-color: #FF6B6B;
+  --van-index-anchor-sticky-background: #FFFFFF;
+}
+
+/* ==================== 自定义样式类 ==================== */
+
+/* 品牌渐变背景 */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF9F43 100%);
+}
+
+/* 品牌阴影 */
+.shadow-brand {
+  box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3);
+}
+
+/* 文字渐变 */
+.text-gradient {
+  background: linear-gradient(135deg, #FF6B6B 0%, #FF9F43 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 卡片悬浮效果 */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:active {
+  transform: scale(0.98);
+}
+
+/* 按钮点击效果 */
+.btn-active:active {
+  opacity: 0.8;
+  transform: translateY(1px);
+}
+
+/* 安全区域适配 */
+.safe-area-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-top {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}

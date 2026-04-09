@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaohong.lease.web.app.mapper.UserBehaviorLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.xiaohong.lease.model.entity.UserBehaviorLog">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="behaviorType" column="behavior_type" jdbcType="TINYINT"
+                typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+        <result property="behaviorDesc" column="behavior_desc" jdbcType="VARCHAR"/>
+        <result property="targetType" column="target_type" jdbcType="VARCHAR"/>
+        <result property="targetId" column="target_id" jdbcType="BIGINT"/>
+        <result property="requestUrl" column="request_url" jdbcType="VARCHAR"/>
+        <result property="requestParam" column="request_param" jdbcType="VARCHAR"/>
+        <result property="userIp" column="user_ip" jdbcType="VARCHAR"/>
+        <result property="userAgent" column="user_agent" jdbcType="VARCHAR"/>
+        <result property="deviceType" column="device_type" jdbcType="VARCHAR"/>
+        <result property="sourcePage" column="source_page" jdbcType="VARCHAR"/>
+        <result property="behaviorTime" column="behavior_time" jdbcType="TIMESTAMP"/>
+        <result property="extraData" column="extra_data" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,behavior_type,behavior_desc,
+        target_type,target_id,request_url,request_param,
+        user_ip,user_agent,device_type,source_page,
+        behavior_time,extra_data,create_time,update_time,is_deleted
+    </sql>
+
+    <select id="selectPvCount" resultType="java.lang.Long">
+        SELECT COUNT(*)
+        FROM user_behavior_log
+        WHERE behavior_time &gt;= #{startTime}
+          AND behavior_time &lt;= #{endTime}
+          AND is_deleted = 0
+    </select>
+
+    <select id="selectUvCount" resultType="java.lang.Long">
+        SELECT COUNT(DISTINCT user_id)
+        FROM user_behavior_log
+        WHERE behavior_time &gt;= #{startTime}
+          AND behavior_time &lt;= #{endTime}
+          AND is_deleted = 0
+    </select>
+
+    <select id="selectHotApartments" resultType="com.xiaohong.lease.web.app.vo.log.HotApartmentVo">
+        SELECT
+            target_id AS apartmentId,
+            COUNT(*) AS browseCount,
+            COUNT(DISTINCT user_id) AS uniqueUserCount
+        FROM user_behavior_log
+        WHERE behavior_type = 1
+          AND target_type = 'apartment'
+          AND behavior_time &gt;= #{startTime}
+          AND behavior_time &lt;= #{endTime}
+          AND is_deleted = 0
+        GROUP BY target_id
+        ORDER BY browseCount DESC
+        LIMIT #{limit}
+    </select>
+
+    <select id="selectBehaviorTrend" resultType="com.xiaohong.lease.web.app.vo.log.BehaviorTrendVo">
+        SELECT
+            CAST(behavior_time AS DATE) AS dateLabel,
+            COUNT(*) AS count
+        FROM user_behavior_log
+        WHERE behavior_time &gt;= #{startTime}
+          AND behavior_time &lt;= #{endTime}
+          AND is_deleted = 0
+        GROUP BY CAST(behavior_time AS DATE)
+        ORDER BY dateLabel
+    </select>
+
+    <select id="selectBehaviorDistribution" resultType="com.xiaohong.lease.web.app.vo.log.BehaviorTrendVo">
+        SELECT
+            behavior_type AS dateLabel,
+            COUNT(*) AS count
+        FROM user_behavior_log
+        WHERE behavior_time &gt;= #{startTime}
+          AND behavior_time &lt;= #{endTime}
+          AND is_deleted = 0
+        GROUP BY behavior_type
+        ORDER BY count DESC
+    </select>
+</mapper>

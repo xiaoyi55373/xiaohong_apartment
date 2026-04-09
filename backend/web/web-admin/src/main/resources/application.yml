@@ -1,0 +1,110 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: 小红公寓claw - 后台管理系统
+  profiles:
+    # 默认激活开发环境，可通过 -Dspring.profiles.active=prod 切换
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+    group:
+      # 开发环境配置组
+      dev:
+        - dev
+        - common
+      # 测试环境配置组
+      test:
+        - test
+        - common
+      # 生产环境配置组
+      prod:
+        - prod
+        - common
+
+---
+# 公共配置（所有环境共享）
+spring:
+  config:
+    activate:
+      on-profile: common
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      write-dates-as-timestamps: false
+      write-null-map-values: false
+    default-property-inclusion: non_null
+
+# 日志配置
+logging:
+  level:
+    com.xiaohong: ${LOG_LEVEL:INFO}
+    org.springframework: WARN
+    org.apache.ibatis: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: ${LOG_PATH:./logs}/xiaohong-admin-${spring.profiles.active}.log
+    max-size: 100MB
+    max-history: 30
+
+# 小红公寓claw 业务配置
+xiaohong:
+  cache:
+    enabled: true
+  performance:
+    enabled: true
+  rate-limit:
+    enabled: true
+    default-window: 60
+    default-max-requests: 100
+    login-window: 60
+    login-max-requests: 5
+    sms-window: 60
+    sms-max-requests: 3
+  circuit-breaker:
+    enabled: true
+    default-failure-threshold: 5
+    default-success-threshold: 3
+    default-timeout-duration: 30000
+    default-half-open-max-calls: 3
+
+springdoc:
+  default-flat-param-object: true
+
+# 定时任务配置
+schedule:
+  # 是否启用定时任务总开关
+  enabled: true
+  # 租约到期提醒配置
+  lease-reminder:
+    enabled: true
+    reminder-days: [7, 3, 1]
+    reminder-time: "09:00"
+    send-sms: true
+    send-email: true
+  # 预约过期处理配置
+  appointment-expire:
+    enabled: true
+    expire-hours: 24
+    process-time: "23:00"
+  # 数据统计配置
+  statistics:
+    enabled: true
+    statistics-time: "01:00"
+    retention-days: 30
+  # 数据清理配置
+  data-cleanup:
+    enabled: true
+    cleanup-time: "02:00"
+    operation-log-retention-days: 180
+    login-log-retention-days: 90
+    behavior-log-retention-days: 30
+    temp-file-retention-days: 7
+
+admin:
+  auth:
+    path-patterns:
+      include: /admin/**
+      exclude: /admin/login/**

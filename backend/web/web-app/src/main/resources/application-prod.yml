@@ -1,0 +1,114 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: 小红公寓claw - 用户端服务(生产环境)
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/lease_prod?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2b8
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 60000
+      idle-timeout: 500000
+      max-lifetime: 540000
+      maximum-pool-size: 20
+      minimum-idle: 10
+      pool-name: SPHHikariPool
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: 0
+      # 连接池配置
+      lettuce:
+        pool:
+          max-active: 16
+          max-idle: 16
+          min-idle: 8
+          max-wait: 1000ms
+      # 超时配置
+      timeout: 5000ms
+      # 关闭超时
+      shutdown-timeout: 100ms
+  jackson:
+    time-zone: GMT+8
+
+# 小红公寓claw 缓存配置
+xiaohong:
+  cache:
+    enabled: true
+  performance:
+    enabled: true
+  rate-limit:
+    enabled: true
+    default-window: 60
+    default-max-requests: 200
+    login-window: 60
+    login-max-requests: 5
+    sms-window: 60
+    sms-max-requests: 3
+  circuit-breaker:
+    enabled: true
+    default-failure-threshold: 5
+    default-success-threshold: 3
+    default-timeout-duration: 30000
+    default-half-open-max-calls: 3
+
+# 生产环境关闭SQL打印
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+springdoc:
+  default-flat-param-object: true
+  # 生产环境可以禁用API文档
+  api-docs:
+    enabled: ${API_DOCS_ENABLED:false}
+  swagger-ui:
+    enabled: ${SWAGGER_UI_ENABLED:false}
+
+aliyun:
+  sms:
+    access-key-id: ${ALIYUN_SMS_ACCESS_KEY_ID:}
+    access-key-secret: ${ALIYUN_SMS_ACCESS_KEY_SECRET:}
+    endpoint: dysmsapi.aliyuncs.com
+
+app:
+  auth:
+    path-patterns:
+      include: /app/**,/mini/**
+      exclude: /app/login/**,/mini/login
+  cors:
+    allowed-origins:
+      - "https://www.gitlbo.top"
+      - "https://mini.gitlbo.top"
+
+minio:
+  endpoint: ${MINIO_ENDPOINT:}
+  access-key: ${MINIO_ACCESS_KEY:}
+  secret-key: ${MINIO_SECRET_KEY:}
+  bucket-name: ${MINIO_BUCKET:xiaohong-prod}
+
+# 短信服务配置
+sms:
+  # 生产环境关闭测试模式
+  test-mode: false
+
+# 邮件服务配置
+spring:
+  mail:
+    host: ${MAIL_HOST:smtp.example.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:noreply@xiaohong.com}
+    password: ${MAIL_PASSWORD:}
+    from-name: 小红公寓
+    ssl: ${MAIL_SSL:true}
+    encoding: UTF-8
+    connection-timeout: 5000
+    timeout: 5000
+    debug: false
